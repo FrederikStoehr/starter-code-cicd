@@ -1,0 +1,10 @@
+name: Greet User
+on: push
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet User
+        run: echo "Hello, ${{ github.actor }}!"
+      - name: Display Current Date
+        run: echo "Current date is $(date)"
