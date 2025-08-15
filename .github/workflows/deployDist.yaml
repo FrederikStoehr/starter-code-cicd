@@ -1,4 +1,4 @@
-#V10
+#V11
 name: Deploy Distribution
 on: push
 jobs:
@@ -6,11 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
-        run: |
-          echo "Cloning repository..."
-          echo "github: ${{ toJson(github) }}"
-          git clone https://github.com/${{ github.repository }}.git myfiles
-          cd myfiles
+        uses: actions/checkout@v5
+        # run: |
+        #   echo "Cloning repository..."
+        #   echo "github: ${{ toJson(github) }}"
+        #   git clone https://github.com/${{ github.repository }}.git myfiles
+        #   cd myfiles
   # deploy:
   #   runs-on: ubuntu-latest
   #   steps:
