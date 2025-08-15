@@ -1,4 +1,4 @@
-#V3
+#V4
 name: Deploy Distribution
 on: push
 jobs:
@@ -9,8 +9,7 @@ jobs:
         run: |
           echo "Cloning repository..."
           echo "github: ${{ toJson(github) }}"
-          git clone https://github.com/${{ github.repository }}.git myfiles
-          cd myfiles
+          git clone https://github.com/FrederikStoehr/starter-code-cicd.git myfiles
   # deploy:
   #   runs-on: ubuntu-latest
   #   steps:
