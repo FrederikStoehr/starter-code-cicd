@@ -1,11 +1,13 @@
-#V19
+#V20
 # https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
 # https://github.com/marketplace/actions/checkout
 # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
 # https://github.com/marketplace/actions/setup-node-js-environment
 # https://github.com/marketplace/actions/cache
-name: Test and Build w/ Cache
-on: [workflow_dispatch]
+# https://github.com/marketplace/actions/upload-a-build-artifact
+# https://github.com/marketplace/actions/download-a-build-artifact
+name: Upload and Download dist-files
+on: [push, workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -27,6 +29,7 @@ jobs:
         run: npm install
       - name: Run tests
         run: npm test
+
   build:
     needs:
       - test
@@ -49,11 +52,23 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Upload dist artifact
+        uses: actions/upload-artifact
+        with:
+          name: dist-files
+          path: dist
+
   deploy:
     needs:
       - test
       - build
     runs-on: ubuntu-latest
     steps:
+      - name: Download dist artifact
+        uses: actions/download-artifact
+        with:
+          name: dist-files
       - name: Deploy Dist
-        run: echo "Deploying Dist"
+        run: |
+          ls dist
+          echo "Deploying Dist"
