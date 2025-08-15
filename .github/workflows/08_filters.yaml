@@ -1,4 +1,4 @@
-#V23
+#V24
 # https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
 # https://github.com/marketplace/actions/checkout
 # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
@@ -6,8 +6,18 @@
 # https://github.com/marketplace/actions/cache
 # https://github.com/marketplace/actions/upload-a-build-artifact
 # https://github.com/marketplace/actions/download-a-build-artifact
-name: Upload and Download
-on: [workflow_dispatch]
+name: Filters
+# on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+    paths-ignore:
+      - README.md
+      - ".github/workflows/*"
+  workflow_dispatch:
+
 jobs:
   test:
     runs-on: ubuntu-latest
