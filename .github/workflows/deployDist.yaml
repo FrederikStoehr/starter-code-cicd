@@ -1,4 +1,4 @@
-#V2
+#V3
 name: Deploy Distribution
 on: push
 jobs:
@@ -10,7 +10,7 @@ jobs:
           echo "Cloning repository..."
           echo "github: ${{ toJson(github) }}"
           git clone https://github.com/${{ github.repository }}.git myfiles
-          cd myfiles && ls
+          cd myfiles
   # deploy:
   #   runs-on: ubuntu-latest
   #   steps:
