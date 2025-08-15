@@ -8,6 +8,7 @@ jobs:
       - name: Setup credentials to access private repositories
         run: |
           echo "secrets: ${{ toJson(secrets) }}"
+          echo "secrets.MY_PAT: ${{ toJson(secrets.MY_PAT) }}"
           git config --global url.https://${{ secrets.MY_PAT }}@github.com/.insteadOf https://github.com/
       - name: Get Code
         run: |
