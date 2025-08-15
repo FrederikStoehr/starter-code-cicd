@@ -1,21 +1,10 @@
-#V8
+#V10
 name: Deploy Distribution
 on: push
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate app token
-        id: app-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ vars.GITHUB_APP_ID }}
-          private-key: ${{ secrets.GITHUB_APP_PRIVATE_KEY }}
-      - name: Setup credentials to access github using app-token
-        run: |
-          git config --global url."https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/".insteadOf https://github.com/
-          echo "steps.app-token.outputs.token: ${{ steps.app-token.outputs.token }}"
-          echo "vars: ${{ toJson(vars) }}"
       - name: Get Code
         run: |
           echo "Cloning repository..."
