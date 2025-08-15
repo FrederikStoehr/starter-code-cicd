@@ -1,6 +1,11 @@
 #V17
+# https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
+# https://github.com/marketplace/actions/checkout
+# https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
+# https://github.com/marketplace/actions/setup-node-js-environment
 name: Test and Build
-on: push
+# on: push
+on: workflow_dispatch
 jobs:
   test:
     runs-on: ubuntu-latest

@@ -1,4 +1,5 @@
 #V12
+# https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
 name: Deploy Distribution
 # on: push
 on: workflow_dispatch

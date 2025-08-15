@@ -1,4 +1,9 @@
-#V18
+#V19
+# https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
+# https://github.com/marketplace/actions/checkout
+# https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
+# https://github.com/marketplace/actions/setup-node-js-environment
+# https://github.com/marketplace/actions/cache
 name: Test and Build
 on: [push, workflow_dispatch]
 jobs:

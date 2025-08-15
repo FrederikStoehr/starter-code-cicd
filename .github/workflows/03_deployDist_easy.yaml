@@ -1,4 +1,6 @@
 #V12
+# https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
+# https://github.com/marketplace/actions/checkout
 name: Deploy Distribution Easy
 # on: push
 on: workflow_dispatch
