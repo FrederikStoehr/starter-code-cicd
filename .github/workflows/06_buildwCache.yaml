@@ -4,7 +4,7 @@
 # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
 # https://github.com/marketplace/actions/setup-node-js-environment
 # https://github.com/marketplace/actions/cache
-name: Test and Build w/ Cache
+name: Test and Build with Cache
 on: [workflow_dispatch]
 jobs:
   test:

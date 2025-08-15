@@ -1,4 +1,4 @@
-#V21
+#V22
 # https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
 # https://github.com/marketplace/actions/checkout
 # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download dist artifact
-        uses: actions/download-artifact
+        uses: actions/download-artifact@v5
         with:
           name: dist-files
       - name: Deploy Dist
