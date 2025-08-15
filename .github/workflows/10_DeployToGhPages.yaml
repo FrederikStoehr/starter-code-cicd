@@ -1,21 +1,20 @@
-#V27
+#V29
 # https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
 # https://github.com/marketplace/actions/checkout
 # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
 # https://github.com/marketplace/actions/setup-node-js-environment
 # https://github.com/marketplace/actions/cache
-# https://github.com/marketplace/actions/upload-a-build-artifact
-# https://github.com/marketplace/actions/download-a-build-artifact
-name: Reuse
-# on: [push, workflow_dispatch]
+# https://github.com/marketplace/actions/deploy-github-pages-site
+# https://github.com/marketplace/actions/upload-github-pages-artifact
+name: Deploy To GH Pages
 on:
-  # push:
-  #   branches:
-  #     - main
-  #     - "feature/**"
-  #   paths-ignore:
-  #     - README.md
-  #     - ".github/workflows/*"
+  push:
+    branches:
+      - main
+      - "feature/**"
+    paths-ignore:
+      - README.md
+      - ".github/workflows/*"
   workflow_dispatch:
 
 jobs:
@@ -43,23 +42,26 @@ jobs:
       - name: Build
         run: npm run build
       - name: Upload dist artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
         with:
-          name: dist-files
+          name: github-pages
           path: dist
 
   deploy:
     needs:
-      - test
       - build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - name: Download dist artifact
-        uses: actions/download-artifact@v5
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
         with:
-          name: dist-files
-          path: dist
-      - name: Deploy Dist
-        run: |
-          ls dist
-          echo "Deploying Dist"
+          token: ${{ secrets.GITHUB_TOKEN }}

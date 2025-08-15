@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://FrederikStoehr.github.io/starter-code-cicd", // https://github.com/FrederikStoehr/starter-code-cicd
   "scripts": {
     "dev": "vite",
     "build": "vite build",
