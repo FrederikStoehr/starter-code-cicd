@@ -1,6 +1,6 @@
 # https://sonarcloud.io/project/configuration/GitHubActions?id=FrederikStoehr_starter-code-cicd
 # v31
-name: Build
+name: SonarCloud
 on:
   push:
     branches:
