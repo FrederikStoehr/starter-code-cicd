@@ -1,4 +1,4 @@
-#V22
+#V23
 # https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
 # https://github.com/marketplace/actions/checkout
 # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
@@ -68,6 +68,7 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           name: dist-files
+          path: dist
       - name: Deploy Dist
         run: |
           ls dist
